@@ -1,11 +1,11 @@
 {
   "validUser": {
-    "username": "existinguser123",
-    "password": "Password123!"
+    "username": "Dariyo",
+    "password": "Dariyo123"
   },
   "newUser": {
-    "username": "newuser",
-    "email": "newuser@test.com",
-    "password": "Password123!"
+    "username": "Dariyo2",
+    "email": "dariyo2@test.com",
+    "password": "Dariyo2123"
   }
 }
