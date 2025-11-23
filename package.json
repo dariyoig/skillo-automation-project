@@ -1,0 +1,27 @@
+{
+  "name": "skillo-automation-project",
+  "version": "1.0.0",
+  "description": "Playwright automation suite for Skillo Social Media Platform",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "eslint": "^8.57.1"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dariyoig/skillo-automation-project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dariyoig/skillo-automation-project/issues"
+  },
+  "homepage": "https://github.com/dariyoig/skillo-automation-project#readme"
+}
