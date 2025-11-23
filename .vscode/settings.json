@@ -8,5 +8,5 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode", //This sets Prettier as the default formatter for your project.
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": true,
-  "liveServer.settings.port": 5502
+  "liveServer.settings.port": 5503
 }
