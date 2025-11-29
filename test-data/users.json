@@ -3,6 +3,10 @@
     "username": "Dariyo",
     "password": "Dariyo123"
   },
+  "invalidUser": {
+    "username": "Dariyo2",
+    "password": "Dariyo2123"
+  },
   "newUser": {
     "username": "Dariyo2",
     "email": "dariyo2@test.com",
