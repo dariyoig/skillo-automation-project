@@ -16,4 +16,9 @@ export class BasePage {
     await this.page.goto(url);
     await this.page.waitForLoadState("networkidle");
   }
+
+  async click(locator) {
+    await locator.click(locator);
+    await this.page.waitForLoadState("networkidle");
+  }
 }
