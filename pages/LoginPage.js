@@ -11,5 +11,9 @@ export class LoginPage extends BasePage {
     this.rememberMeCheckboxLocator = page.getByRole("checkbox");
     this.signInButtonLocator = page.locator("#sign-in-button");
     this.registerButtonLocator = page.getByRole("link", { name: "Register" });
+    this.successfullLoginMessageLocator = page.getByRole("alertdialog", { name: "Successful login!" });
+    this.successfullLogoutMessageLocator = page.getByRole("alertdialog", { name: "Successful logout!" });
+    this.wrongUsernameOrPasswordMessageLocator =  page.getByRole('alertdialog', { name: 'Wrong username or password!' });
+
   }
 }
