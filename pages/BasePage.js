@@ -12,8 +12,8 @@ export class BasePage {
     this.searchFieldLocator = page.locator("#search-bar");
   }
 
-  async open(url) {
-    await this.page.goto(url);
+  async goToBasePage() {
+    await this.page.goto("/");
     await this.page.waitForLoadState("networkidle");
   }
 
