@@ -6,10 +6,5 @@
   "invalidUser": {
     "username": "Dariyo2",
     "password": "Dariyo2123"
-  },
-  "newUser": {
-    "username": "Dariyo2",
-    "email": "dariyo2@test.com",
-    "password": "Dariyo2123"
   }
 }
