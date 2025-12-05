@@ -1,0 +1,53 @@
+{
+  "validInputs": [
+    {
+      "case": "all fields valid",
+      "username": "BASE-",
+      "email": "pathhh@example.com",
+      "birthDay": "1992-03-14",
+      "password": "ValidPass123",
+      "confirmPassword": "ValidPass123",
+      "publicInfo": "standard bio text"
+    }
+  ],
+  "missingInputs": [
+    {
+      "case": "missing name",
+      "username": "",
+      "email": "abv123@cd.com",
+      "birthDay": "2025-11-15",
+      "password": "Test123",
+      "confirmPassword": "Test123",
+      "publicInfo": "this is public info"
+    },
+    {
+      "case": "missing email",
+      "username": "NewUser01",
+      "email": "",
+      "birthDay": "1995-08-22",
+      "password": "Valid123",
+      "confirmPassword": "Valid123",
+      "publicInfo": "short bio text"
+    }
+  ],
+  "invalidInputs": [
+    {
+      "case": "short username",
+      "username": "D",
+      "email": "abv123@cd.com",
+      "birthDay": "2025-11-15",
+      "password": "Test123",
+      "confirmPassword": "Test123",
+      "publicInfo": "this is public info"
+    },
+    {
+      "case": "invalid email format",
+      "username": "ValidUser",
+      "email": "wrong-format",
+      "birthDay": "1990-05-30",
+      "password": "Strong123",
+      "confirmPassword": "Strong123",
+      "publicInfo": "another public profile text"
+    }
+  ]
+}
