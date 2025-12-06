@@ -1,10 +1,19 @@
 {
   "validInputs": [
     {
-      "case": "all fields valid",
-      "username": "BASE-",
+      "case": "all fields filled, standard",
+      "username": "BASE",
       "email": "d@ab.bg",
       "birthDay": "1992-03-14",
+      "password": "ValidPass123",
+      "confirmPassword": "ValidPass123",
+      "publicInfo": "standard bio text"
+    },
+    {
+      "case": "all fields filled, username with special symbols",
+      "username": "a.b_c-",
+      "email": "i@ab.bg",
+      "birthDay": "1990-12-01",
       "password": "ValidPass123",
       "confirmPassword": "ValidPass123",
       "publicInfo": "standard bio text"
