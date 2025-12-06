@@ -1,6 +1,6 @@
 // // Logout tests specification file
 //Test 1 - Verify user log out after login
-//Test 1 - Verify user log out after registration
+//Test 2 - Verify user log out after registration
 
 import { test, expect } from "@playwright/test";
 import { LoginPage } from "../pages/LoginPage";
