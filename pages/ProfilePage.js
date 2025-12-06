@@ -5,6 +5,8 @@ export class ProfilePage extends BasePage {
   constructor(page) {
     super(page);
 
+    this.url = "/users/";
+
     this.allPostsFilterLocator = page.getByText("All");
   }
   getUsernameHeadingLocator(username) {
