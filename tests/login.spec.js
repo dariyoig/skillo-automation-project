@@ -1,7 +1,7 @@
 // // Login tests specification file
 import { test, expect } from "@playwright/test";
 import { LoginPage } from "../pages/LoginPage";
-import users from "../test-data/users.json" assert { type: "json" };
+import loginData from "../test-data/loginData.json" assert { type: "json" };
 
 test.describe("Successful login suite", () => {
   // Test 1 - Verify successful login with valid form
@@ -10,8 +10,8 @@ test.describe("Successful login suite", () => {
     await loginPage.goToBasePage();
     await loginPage.click(loginPage.loginButtonLocator);
 
-    await loginPage.usernameFieldLocator.fill(users.validUser.username);
-    await loginPage.passwordFieldLocator.fill(users.validUser.password);
+    await loginPage.usernameFieldLocator.fill(loginData.validUser.username);
+    await loginPage.passwordFieldLocator.fill(loginData.validUser.password);
     await loginPage.rememberMeCheckboxLocator.check();
     await loginPage.click(loginPage.signInButtonLocator);
     await loginPage.page.waitForURL("**/posts/all");
@@ -27,8 +27,8 @@ test.describe("Successful login suite", () => {
     await loginPage.goToBasePage();
     await loginPage.click(loginPage.loginButtonLocator);
 
-    await loginPage.usernameFieldLocator.fill(users.validUser.username);
-    await loginPage.passwordFieldLocator.fill(users.validUser.password);
+    await loginPage.usernameFieldLocator.fill(loginData.validUser.username);
+    await loginPage.passwordFieldLocator.fill(loginData.validUser.password);
     await loginPage.click(loginPage.signInButtonLocator);
     await loginPage.page.waitForURL("**/posts/all");
 
@@ -75,8 +75,8 @@ test.describe("Unsuccessful login suite", () => {
     await loginPage.goToBasePage();
     await loginPage.click(loginPage.loginButtonLocator);
 
-    await loginPage.usernameFieldLocator.fill(users.invalidUser.username);
-    await loginPage.passwordFieldLocator.fill(users.invalidUser.password);
+    await loginPage.usernameFieldLocator.fill(loginData.invalidUser.username);
+    await loginPage.passwordFieldLocator.fill(loginData.invalidUser.password);
     await loginPage.rememberMeCheckboxLocator.check();
     await loginPage.click(loginPage.signInButtonLocator);
 
