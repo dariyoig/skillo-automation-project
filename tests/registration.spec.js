@@ -18,6 +18,7 @@ test.describe("Successful registration suite", () => {
 
     const validInput = { ...registrationData.validInputs[0] };
     validInput.username += Date.now();
+    validInput.email = Date.now() + validInput.email;
 
     await loginPage.goToBasePage();
     await loginPage.click(loginPage.loginButtonLocator);

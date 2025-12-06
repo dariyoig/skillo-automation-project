@@ -3,7 +3,7 @@
     {
       "case": "all fields valid",
       "username": "BASE-",
-      "email": "pathhh@example.com",
+      "email": "d@ab.bg",
       "birthDay": "1992-03-14",
       "password": "ValidPass123",
       "confirmPassword": "ValidPass123",
