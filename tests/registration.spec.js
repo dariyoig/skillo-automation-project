@@ -10,26 +10,27 @@ import { LoginPage } from "../pages/LoginPage";
 
 const missingInputs = registrationData.missingInputs;
 const invalidInputs = registrationData.invalidInputs;
+const validInputs = registrationData.validInputs;
 
 test.describe("Successful registration suite", () => {
-  test("Verify successfull registration", async ({ page }) => {
-    const registrationPage = new RegistrationPage(page);
-    const loginPage = new LoginPage(page);
+  validInputs.forEach((dataSet) => {
+    test(`Verify successfull registration in case of ${dataSet.case}`, async ({
+      page,
+    }) => {
+      const registrationPage = new RegistrationPage(page);
+      const loginPage = new LoginPage(page);
 
-    const validInput = { ...registrationData.validInputs[0] };
-    validInput.username += Date.now();
-    validInput.email = Date.now() + validInput.email;
+      await loginPage.goToBasePage();
+      await loginPage.click(loginPage.loginButtonLocator);
+      await loginPage.click(loginPage.registerButtonLocator);
 
-    await loginPage.goToBasePage();
-    await loginPage.click(loginPage.loginButtonLocator);
-    await loginPage.click(loginPage.registerButtonLocator);
+      await registrationPage.fillRegistrationForm(dataSet);
+      await registrationPage.submitRegistrationForm();
 
-    await registrationPage.fillRegistrationForm(validInput);
-    await registrationPage.submitRegistrationForm();
-
-    await expect(
-      registrationPage.successfullRegisterMessageLocator
-    ).toBeVisible();
+      await expect(
+        registrationPage.successfullRegisterMessageLocator
+      ).toBeVisible();
+    });
   });
 });
 
