@@ -10,6 +10,7 @@ export class BasePage {
     this.profileButtonLocator = page.locator("#nav-link-profile");
     this.newPostButtonLocator = page.locator("#nav-link-new-post");
     this.searchFieldLocator = page.locator("#search-bar");
+    this.signOutButtonLocator = page.locator("a:has(i.fa-sign-out-alt)");
   }
 
   async goToBasePage() {
