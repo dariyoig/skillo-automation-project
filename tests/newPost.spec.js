@@ -15,7 +15,7 @@ test.beforeEach(async ({ newPostPage, loggedInUser }) => {
 });
 
 test.describe("Successful post creation suite", () => {
-  test("Verify successfull post upload with valid data", async ({ newPostPage }) => {
+  test("Verify successful post upload with valid data", async ({ newPostPage }) => {
     const caption = appendTimestampBack("POST");
 
     await newPostPage.createPost(imagePath, caption);

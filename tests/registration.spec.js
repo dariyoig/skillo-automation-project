@@ -17,12 +17,12 @@ test.beforeEach(async ({ loginPage }) => {
 
 test.describe("Successful registration suite", () => {
   validInputs.forEach((dataSet) => {
-    test(`Verify successfull registration in case of ${dataSet.case}`, async ({ registrationPage }) => {
+    test(`Verify successful registration in case of ${dataSet.case}`, async ({ registrationPage }) => {
       const testData = makeRegistrationDataUnique({ ...dataSet });
 
       await registrationPage.register(testData);
 
-      await expect(registrationPage.successfullRegisterMessageLocator).toBeVisible();
+      await expect(registrationPage.successfulRegisterMessageLocator).toBeVisible();
     });
   });
 });

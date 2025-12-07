@@ -19,7 +19,7 @@ test.describe("Successful login suite", () => {
 
     await expect(loginPage.loginButtonLocator).not.toBeVisible();
     await expect(loginPage.profileButtonLocator).toBeVisible();
-    await expect(loginPage.successfullLoginMessageLocator).toBeVisible();
+    await expect(loginPage.successfulLoginMessageLocator).toBeVisible();
   });
 
   test("Verify successful login without checkbox checked", async ({ loginPage }) => {
@@ -28,7 +28,7 @@ test.describe("Successful login suite", () => {
 
     await expect(loginPage.loginButtonLocator).not.toBeVisible();
     await expect(loginPage.profileButtonLocator).toBeVisible();
-    await expect(loginPage.successfullLoginMessageLocator).toBeVisible();
+    await expect(loginPage.successfulLoginMessageLocator).toBeVisible();
   });
 });
 

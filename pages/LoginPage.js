@@ -12,7 +12,7 @@ export class LoginPage extends BasePage {
     this.rememberMeCheckboxLocator = page.getByRole("checkbox");
     this.signInButtonLocator = page.locator("#sign-in-button");
     this.registerButtonLocator = page.getByRole("link", { name: "Register" });
-    this.successfullLoginMessageLocator = page.getByRole("alertdialog", { name: "Successful login!" });
+    this.successfulLoginMessageLocator = page.getByRole("alertdialog", { name: "Successful login!" });
     this.wrongUsernameOrPasswordMessageLocator = page.getByRole("alertdialog", { name: "Wrong username or password!" });
   }
 
@@ -41,6 +41,7 @@ export class LoginPage extends BasePage {
   async fillLoginPassword(pass) {
     await this.passwordFieldLocator.fill(pass);
   }
+  // Handles "Remember Me" checkbox state based on test requirements
   async checkLoginRememberMe(boolean) {
     if (boolean) await this.rememberMeCheckboxLocator.check();
     else await this.rememberMeCheckboxLocator.uncheck();

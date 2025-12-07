@@ -14,7 +14,7 @@ export class RegistrationPage extends BasePage {
     this.regConfirmPasswordLocator = page.locator("#defaultRegisterPhonePassword");
     this.regPublicInfoLocator = page.getByRole("textbox", { name: "Public info" });
     this.regSigninButtonLocator = page.locator("#sign-in-button");
-    this.successfullRegisterMessageLocator = page.getByRole("alertdialog", { name: "Successful register!" });
+    this.successfulRegisterMessageLocator = page.getByRole("alertdialog", { name: "Successful register!" });
   }
 
   async register(data) {
