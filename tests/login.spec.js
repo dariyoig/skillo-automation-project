@@ -54,7 +54,7 @@ test.describe("Unsuccessful login suite", () => {
     await loginPage.click(loginPage.loginButtonLocator);
     await loginPage.usernameFieldLocator.fill("");
 
-    await expect(loginPage.signInButtonLocator).toBeDisabled;
+    await expect(loginPage.signInButtonLocator).toBeDisabled();
     await expect(loginPage.loginButtonLocator).toBeVisible();
     await expect(loginPage.profileButtonLocator).not.toBeVisible();
   });
@@ -68,7 +68,7 @@ test.describe("Unsuccessful login suite", () => {
     await loginPage.click(loginPage.loginButtonLocator);
     await loginPage.passwordFieldLocator.fill("");
 
-    await expect(loginPage.signInButtonLocator).toBeDisabled;
+    await expect(loginPage.signInButtonLocator).toBeDisabled();
     await expect(loginPage.loginButtonLocator).toBeVisible();
     await expect(loginPage.profileButtonLocator).not.toBeVisible();
   });
