@@ -24,8 +24,6 @@ export class RegistrationPage extends BasePage {
   }
 
   async fillRegistrationForm(data) {
-    data.username += Date.now();
-    data.email = Date.now() + data.email;
     await this.regUsernameLocator.fill(data.username);
     await this.regEmailLocator.fill(data.email);
     await this.regBirthdateLocator.fill(data.birthDay);
@@ -35,5 +33,11 @@ export class RegistrationPage extends BasePage {
   }
   async submitRegistrationForm() {
     await this.regSigninButtonLocator.click();
+  }
+  appendTimestampFront(str) {
+    return Date.now() + str;
+  }
+  appendTimestampBack(str) {
+    return str + Date.now();
   }
 }
