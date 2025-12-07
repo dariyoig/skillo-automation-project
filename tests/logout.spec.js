@@ -4,7 +4,7 @@
 
 import { test, expect } from "./fixtures/base";
 import registrationData from "../test-data/registrationData.json" assert { type: "json" };
-import loginData from "../test-data/loginData.json" assert { type: "json" };
+import { makeRegistrationDataUnique } from "../utils/utils.js";
 
 test("Verify user log out from profile page after login", async ({ loginPage, profilePage, loggedInUser }) => {
   await profilePage.click(profilePage.profileButtonLocator);
@@ -19,17 +19,14 @@ test("Verify user log out from profile page after registration", async ({
   profilePage,
   registrationPage,
 }) => {
-  const testData = { ...registrationData.validInputs[0] };
-  testData.username = registrationPage.appendTimestampBack(testData.username);
-  testData.email = registrationPage.appendTimestampFront(testData.email);
+  const testData = makeRegistrationDataUnique({ ...registrationData.validInputs[0] });
 
   await loginPage.goToBasePage();
   await loginPage.click(loginPage.loginButtonLocator);
 
   await loginPage.click(loginPage.registerButtonLocator);
 
-  await registrationPage.fillRegistrationForm(testData);
-  await registrationPage.submitRegistrationForm();
+  await registrationPage.register(testData);
 
   await profilePage.click(profilePage.profileButtonLocator);
   await profilePage.page.waitForURL("**/users/**");
