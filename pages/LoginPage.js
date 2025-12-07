@@ -16,4 +16,27 @@ export class LoginPage extends BasePage {
     this.successfullLogoutMessageLocator = page.getByRole("alertdialog", { name: "Successful logout!" });
     this.wrongUsernameOrPasswordMessageLocator = page.getByRole("alertdialog", { name: "Wrong username or password!" });
   }
+
+  async login(name, pass, remember) {
+    await this.fillLoginForm(name, pass, remember);
+    await this.submitLoginForm();
+  }
+  async fillLoginForm(name, pass, remember) {
+    await this.fillLoginUsername(name);
+    await this.fillLoginPassword(pass);
+    await this.checkLoginRememberMe(remember);
+  }
+  async fillLoginUsername(name) {
+    await this.usernameFieldLocator.fill(name);
+  }
+  async fillLoginPassword(pass) {
+    await this.passwordFieldLocator.fill(pass);
+  }
+  async checkLoginRememberMe(boolean) {
+    if (boolean) await this.rememberMeCheckboxLocator.check();
+    else await this.rememberMeCheckboxLocator.uncheck();
+  }
+  async submitLoginForm() {
+    await this.signInButtonLocator.click();
+  }
 }
