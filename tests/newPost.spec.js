@@ -17,10 +17,7 @@ test.describe("Successful post creation suite", () => {
     await loginPage.goToBasePage();
     await loginPage.click(loginPage.loginButtonLocator);
 
-    await loginPage.usernameFieldLocator.fill(loginData.validUser.username);
-    await loginPage.passwordFieldLocator.fill(loginData.validUser.password);
-    await loginPage.rememberMeCheckboxLocator.check();
-    await loginPage.click(loginPage.signInButtonLocator);
+    await loginPage.login(loginData.validUser.username, loginData.validUser.password, true);
 
     await newPostPage.click(newPostPage.newPostButtonLocator);
 
@@ -39,10 +36,7 @@ test.describe("Unsuccessful post creation suite", () => {
     await loginPage.goToBasePage();
     await loginPage.click(loginPage.loginButtonLocator);
 
-    await loginPage.usernameFieldLocator.fill(loginData.validUser.username);
-    await loginPage.passwordFieldLocator.fill(loginData.validUser.password);
-    await loginPage.rememberMeCheckboxLocator.check();
-    await loginPage.click(loginPage.signInButtonLocator);
+    await loginPage.login(loginData.validUser.username, loginData.validUser.password, true);
 
     await newPostPage.click(newPostPage.newPostButtonLocator);
 
@@ -56,10 +50,7 @@ test.describe("Unsuccessful post creation suite", () => {
     await loginPage.goToBasePage();
     await loginPage.click(loginPage.loginButtonLocator);
 
-    await loginPage.usernameFieldLocator.fill(loginData.validUser.username);
-    await loginPage.passwordFieldLocator.fill(loginData.validUser.password);
-    await loginPage.rememberMeCheckboxLocator.check();
-    await loginPage.click(loginPage.signInButtonLocator);
+    await loginPage.login(loginData.validUser.username, loginData.validUser.password, true);
 
     await newPostPage.click(newPostPage.newPostButtonLocator);
 

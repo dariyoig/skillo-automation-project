@@ -14,10 +14,8 @@ test.describe("Successful login suite", () => {
     await loginPage.goToBasePage();
     await loginPage.click(loginPage.loginButtonLocator);
 
-    await loginPage.usernameFieldLocator.fill(loginData.validUser.username);
-    await loginPage.passwordFieldLocator.fill(loginData.validUser.password);
-    await loginPage.rememberMeCheckboxLocator.check();
-    await loginPage.click(loginPage.signInButtonLocator);
+    await loginPage.login(loginData.validUser.username, loginData.validUser.password, true);
+
     await loginPage.page.waitForURL("**/posts/all");
 
     await expect(loginPage.loginButtonLocator).not.toBeVisible();
@@ -30,9 +28,8 @@ test.describe("Successful login suite", () => {
     await loginPage.goToBasePage();
     await loginPage.click(loginPage.loginButtonLocator);
 
-    await loginPage.usernameFieldLocator.fill(loginData.validUser.username);
-    await loginPage.passwordFieldLocator.fill(loginData.validUser.password);
-    await loginPage.click(loginPage.signInButtonLocator);
+    await loginPage.login(loginData.validUser.username, loginData.validUser.password, false);
+
     await loginPage.page.waitForURL("**/posts/all");
 
     await expect(loginPage.loginButtonLocator).not.toBeVisible();
@@ -46,7 +43,8 @@ test.describe("Unsuccessful login suite", () => {
   test("Verify Sign in button is inactive when no username", async ({ loginPage }) => {
     await loginPage.goToBasePage();
     await loginPage.click(loginPage.loginButtonLocator);
-    await loginPage.usernameFieldLocator.fill("");
+
+    await loginPage.fillLoginForm("", loginData.validUser.password, true);
 
     await expect(loginPage.signInButtonLocator).toBeDisabled();
     await expect(loginPage.loginButtonLocator).toBeVisible();
@@ -57,7 +55,8 @@ test.describe("Unsuccessful login suite", () => {
   test("Verify Sign in button is inactive when no password", async ({ loginPage }) => {
     await loginPage.goToBasePage();
     await loginPage.click(loginPage.loginButtonLocator);
-    await loginPage.passwordFieldLocator.fill("");
+
+    await loginPage.fillLoginForm(loginData.validUser.username, "", true);
 
     await expect(loginPage.signInButtonLocator).toBeDisabled();
     await expect(loginPage.loginButtonLocator).toBeVisible();
@@ -69,10 +68,7 @@ test.describe("Unsuccessful login suite", () => {
     await loginPage.goToBasePage();
     await loginPage.click(loginPage.loginButtonLocator);
 
-    await loginPage.usernameFieldLocator.fill(loginData.invalidUser.username);
-    await loginPage.passwordFieldLocator.fill(loginData.invalidUser.password);
-    await loginPage.rememberMeCheckboxLocator.check();
-    await loginPage.click(loginPage.signInButtonLocator);
+    await loginPage.login(loginData.invalidUser.username, loginData.invalidUser.password, true);
 
     await expect(loginPage.wrongUsernameOrPasswordMessageLocator).toBeVisible();
     await expect(loginPage.loginButtonLocator).toBeVisible();
