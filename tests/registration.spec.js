@@ -11,14 +11,14 @@ const missingInputs = registrationData.missingInputs;
 const invalidInputs = registrationData.invalidInputs;
 const validInputs = registrationData.validInputs;
 
+test.beforeEach(async ({ loginPage }) => {
+  await loginPage.navigateToRegistrationPage();
+});
+
 test.describe("Successful registration suite", () => {
   validInputs.forEach((dataSet) => {
-    test(`Verify successfull registration in case of ${dataSet.case}`, async ({ loginPage, registrationPage }) => {
+    test(`Verify successfull registration in case of ${dataSet.case}`, async ({ registrationPage }) => {
       const testData = makeRegistrationDataUnique({ ...dataSet });
-
-      await loginPage.goToBasePage();
-      await loginPage.click(loginPage.loginButtonLocator);
-      await loginPage.click(loginPage.registerButtonLocator);
 
       await registrationPage.register(testData);
 
@@ -29,12 +29,8 @@ test.describe("Successful registration suite", () => {
 
 test.describe("Unsuccessful registration suite", () => {
   missingInputs.forEach((dataSet) => {
-    test(`Verify sign in button inactivity in case of ${dataSet.case}`, async ({ loginPage, registrationPage }) => {
+    test(`Verify sign in button inactivity in case of ${dataSet.case}`, async ({ registrationPage }) => {
       const testData = { ...dataSet };
-
-      await loginPage.goToBasePage();
-      await loginPage.click(loginPage.loginButtonLocator);
-      await loginPage.click(loginPage.registerButtonLocator);
 
       await registrationPage.fillRegistrationForm(testData);
 
@@ -43,12 +39,8 @@ test.describe("Unsuccessful registration suite", () => {
   });
 
   invalidInputs.forEach((dataSet) => {
-    test(`Verify sign in button inactivity in case of ${dataSet.case}`, async ({ loginPage, registrationPage }) => {
+    test(`Verify sign in button inactivity in case of ${dataSet.case}`, async ({ registrationPage }) => {
       const testData = { ...dataSet };
-
-      await loginPage.goToBasePage();
-      await loginPage.click(loginPage.loginButtonLocator);
-      await loginPage.click(loginPage.registerButtonLocator);
 
       await registrationPage.fillRegistrationForm(testData);
 
