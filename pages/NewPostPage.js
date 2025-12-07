@@ -18,4 +18,19 @@ export class NewPostPage extends BasePage {
     this.onlyImageAllowedMessageLocator = page.getByRole("alertdialog", { name: "Only files of type image allowed" });
     this.enterCaptionMessageLocator = page.getByRole("alertdialog", { name: "Please enter caption!" });
   }
+
+  async createPost(pic, caption) {
+    await this.uploadPicture(pic);
+    await this.fillCaption(caption);
+    await this.submitNewPost();
+  }
+  async uploadPicture(pic) {
+    await this.fileInputLocator.setInputFiles(pic);
+  }
+  async fillCaption(caption) {
+    await this.postCaptionFieldLocator.fill(caption);
+  }
+  async submitNewPost() {
+    await this.createPostButtonLocator.click();
+  }
 }
