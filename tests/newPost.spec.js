@@ -55,7 +55,6 @@ test.describe("Unsuccessful post creation suite", () => {
     await newPostPage.click(newPostPage.newPostButtonLocator);
 
     await newPostPage.fileInputLocator.setInputFiles(invalidImagePath);
-    await page.screenshot();
     await expect(newPostPage.onlyImageAllowedMessageLocator).toBeVisible();
   });
 
