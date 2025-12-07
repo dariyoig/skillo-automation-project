@@ -20,6 +20,7 @@ const test = base.extend({
   profilePage: async ({ page }, use) => {
     await use(new ProfilePage(page));
   },
+  // Auto-login fixture: logs in user before test, enabling tests that require authentication
   loggedInUser: async ({ loginPage }, use) => {
     await loginPage.page.goto(loginPage.url);
     await loginPage.login(loginData.validUser.username, loginData.validUser.password, true);

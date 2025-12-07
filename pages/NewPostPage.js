@@ -7,6 +7,7 @@ export class NewPostPage extends BasePage {
 
     this.url = "/posts/create";
 
+    // Target visible file input only, excluding hidden inputs used by the upload component
     this.fileInputLocator = page.locator('input[formcontrolname="coverUrl"][type="file"]:not([hidden])');
     this.dropImageHereLocator = page.getByText("Drop an Image here");
     this.browseButtonLocator = page.locator("#choose-file");
