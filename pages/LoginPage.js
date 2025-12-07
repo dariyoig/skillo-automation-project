@@ -13,10 +13,19 @@ export class LoginPage extends BasePage {
     this.signInButtonLocator = page.locator("#sign-in-button");
     this.registerButtonLocator = page.getByRole("link", { name: "Register" });
     this.successfullLoginMessageLocator = page.getByRole("alertdialog", { name: "Successful login!" });
-    this.successfullLogoutMessageLocator = page.getByRole("alertdialog", { name: "Successful logout!" });
     this.wrongUsernameOrPasswordMessageLocator = page.getByRole("alertdialog", { name: "Wrong username or password!" });
   }
 
+  async navigateToLoginPage() {
+    await this.goToBasePage();
+    await this.click(this.loginButtonLocator);
+  }
+
+  async navigateToRegistrationPage() {
+    await this.goToBasePage();
+    await this.click(this.loginButtonLocator);
+    await this.click(this.registerButtonLocator);
+  }
   async login(name, pass, remember) {
     await this.fillLoginForm(name, pass, remember);
     await this.submitLoginForm();
