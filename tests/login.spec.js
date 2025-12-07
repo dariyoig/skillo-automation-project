@@ -9,7 +9,6 @@ import { test, expect } from "./fixtures/base";
 import loginData from "../test-data/loginData.json" assert { type: "json" };
 
 test.describe("Successful login suite", () => {
-  // Test 1 - Verify successful login with valid form
   test("Verify successful login with valid form", async ({ loginPage }) => {
     await loginPage.goToBasePage();
     await loginPage.click(loginPage.loginButtonLocator);
@@ -23,7 +22,6 @@ test.describe("Successful login suite", () => {
     await expect(loginPage.successfullLoginMessageLocator).toBeVisible();
   });
 
-  // Test 2 - Verify successful login without checkbox checked
   test("Verify successful login without checkbox checked", async ({ loginPage }) => {
     await loginPage.goToBasePage();
     await loginPage.click(loginPage.loginButtonLocator);
@@ -39,7 +37,6 @@ test.describe("Successful login suite", () => {
 });
 
 test.describe("Unsuccessful login suite", () => {
-  // Test 3 - Verify Sign in button is inactive when no username
   test("Verify Sign in button is inactive when no username", async ({ loginPage }) => {
     await loginPage.goToBasePage();
     await loginPage.click(loginPage.loginButtonLocator);
@@ -51,7 +48,6 @@ test.describe("Unsuccessful login suite", () => {
     await expect(loginPage.profileButtonLocator).not.toBeVisible();
   });
 
-  // Test 4 - Verify Sign in button is inactive when no password
   test("Verify Sign in button is inactive when no password", async ({ loginPage }) => {
     await loginPage.goToBasePage();
     await loginPage.click(loginPage.loginButtonLocator);
@@ -63,7 +59,6 @@ test.describe("Unsuccessful login suite", () => {
     await expect(loginPage.profileButtonLocator).not.toBeVisible();
   });
 
-  // Test 5 - Verify error message when user and pass are invalid
   test("Verify error message when user and pass are invalid", async ({ loginPage }) => {
     await loginPage.goToBasePage();
     await loginPage.click(loginPage.loginButtonLocator);

@@ -31,8 +31,6 @@ test.describe("Successful post creation suite", () => {
 
 test.describe("Unsuccessful post creation suite", () => {
   test("Verify error message upon upload of invalid File", async ({ loginPage, newPostPage }) => {
-    const caption = `Post-${Date.now()}`;
-
     await loginPage.goToBasePage();
     await loginPage.click(loginPage.loginButtonLocator);
 
@@ -45,8 +43,6 @@ test.describe("Unsuccessful post creation suite", () => {
   });
 
   test("Verify error message when missing caption", async ({ loginPage, newPostPage }) => {
-    const caption = `Post-${Date.now()}`;
-
     await loginPage.goToBasePage();
     await loginPage.click(loginPage.loginButtonLocator);
 
@@ -55,7 +51,6 @@ test.describe("Unsuccessful post creation suite", () => {
     await newPostPage.click(newPostPage.newPostButtonLocator);
 
     await newPostPage.fileInputLocator.setInputFiles(imagePath);
-    //await newPostPage.postCaptionFieldLocator.fill(caption);
     await newPostPage.createPostButtonLocator.click();
 
     await expect(newPostPage.enterCaptionMessageLocator).toBeVisible();

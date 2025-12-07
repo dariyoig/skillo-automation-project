@@ -41,7 +41,6 @@ test.describe("Unsuccessful registration suite", () => {
       await registrationPage.fillRegistrationForm(testData);
 
       await expect(registrationPage.regSigninButtonLocator).toBeDisabled();
-      //await expect(page.url()).toContain(registrationPage.url);
     });
   });
 
@@ -56,7 +55,6 @@ test.describe("Unsuccessful registration suite", () => {
       await registrationPage.fillRegistrationForm(testData);
 
       await expect(registrationPage.regSigninButtonLocator).toBeDisabled();
-      //await expect(page.url()).toContain(registrationPage.url);
     });
   });
 });
