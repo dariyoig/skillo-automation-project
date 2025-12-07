@@ -22,4 +22,7 @@ export class BasePage {
     await locator.click();
     await this.page.waitForLoadState("networkidle");
   }
+  async waitForUrl(urlPattern) {
+    await this.page.waitForURL(urlPattern);
+  }
 }
