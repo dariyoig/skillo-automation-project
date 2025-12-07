@@ -3,10 +3,8 @@
 // Test 2 - Verify sign in button inactivity in case of missing input
 // Test 3 - Verify sign in button inactivity in case of wrong input
 
-import { test, expect } from "@playwright/test";
-import { RegistrationPage } from "../pages/RegistrationPage";
+import { test, expect } from "./fixtures/base";
 import registrationData from "../test-data/registrationData.json" assert { type: "json" };
-import { LoginPage } from "../pages/LoginPage";
 
 const missingInputs = registrationData.missingInputs;
 const invalidInputs = registrationData.invalidInputs;
@@ -14,9 +12,7 @@ const validInputs = registrationData.validInputs;
 
 test.describe("Successful registration suite", () => {
   validInputs.forEach((dataSet) => {
-    test(`Verify successfull registration in case of ${dataSet.case}`, async ({ page }) => {
-      const registrationPage = new RegistrationPage(page);
-      const loginPage = new LoginPage(page);
+    test(`Verify successfull registration in case of ${dataSet.case}`, async ({ loginPage, registrationPage }) => {
       const testData = { ...dataSet };
       testData.username = registrationPage.appendTimestampBack(testData.username);
       testData.email = registrationPage.appendTimestampFront(testData.email);
@@ -35,9 +31,7 @@ test.describe("Successful registration suite", () => {
 
 test.describe("Unsuccessful registration suite", () => {
   missingInputs.forEach((dataSet) => {
-    test(`Verify sign in button inactivity in case of ${dataSet.case}`, async ({ page }) => {
-      const registrationPage = new RegistrationPage(page);
-      const loginPage = new LoginPage(page);
+    test(`Verify sign in button inactivity in case of ${dataSet.case}`, async ({ loginPage, registrationPage }) => {
       const testData = { ...dataSet };
 
       await loginPage.goToBasePage();
@@ -52,9 +46,7 @@ test.describe("Unsuccessful registration suite", () => {
   });
 
   invalidInputs.forEach((dataSet) => {
-    test(`Verify sign in button inactivity in case of ${dataSet.case}`, async ({ page }) => {
-      const registrationPage = new RegistrationPage(page);
-      const loginPage = new LoginPage(page);
+    test(`Verify sign in button inactivity in case of ${dataSet.case}`, async ({ loginPage, registrationPage }) => {
       const testData = { ...dataSet };
 
       await loginPage.goToBasePage();

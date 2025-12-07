@@ -3,9 +3,7 @@
 // Test 2 - Verify error message upon upload of invalid File
 // Test 3 - Verify error message when missing caption
 
-import { test, expect } from "@playwright/test";
-import { NewPostPage } from "../pages/NewPostPage";
-import { LoginPage } from "../pages/LoginPage";
+import { test, expect } from "./fixtures/base";
 import loginData from "../test-data/loginData.json" assert { type: "json" };
 import path from "node:path";
 
@@ -13,10 +11,7 @@ const imagePath = path.resolve("test-data/image-file.png");
 const invalidImagePath = path.resolve("test-data/csv-file.csv");
 
 test.describe("Successful post creation suite", () => {
-  test("Verify successfull post upload with valid data", async ({ page }) => {
-    const newPostPage = new NewPostPage(page);
-    const loginPage = new LoginPage(page);
-
+  test("Verify successfull post upload with valid data", async ({ loginPage, newPostPage }) => {
     const caption = `Post-${Date.now()}`;
 
     await loginPage.goToBasePage();
@@ -38,10 +33,7 @@ test.describe("Successful post creation suite", () => {
 });
 
 test.describe("Unsuccessful post creation suite", () => {
-  test("Verify error message upon upload of invalid File", async ({ page }) => {
-    const newPostPage = new NewPostPage(page);
-    const loginPage = new LoginPage(page);
-
+  test("Verify error message upon upload of invalid File", async ({ loginPage, newPostPage }) => {
     const caption = `Post-${Date.now()}`;
 
     await loginPage.goToBasePage();
@@ -58,10 +50,7 @@ test.describe("Unsuccessful post creation suite", () => {
     await expect(newPostPage.onlyImageAllowedMessageLocator).toBeVisible();
   });
 
-  test("Verify error message when missing caption", async ({ page }) => {
-    const newPostPage = new NewPostPage(page);
-    const loginPage = new LoginPage(page);
-
+  test("Verify error message when missing caption", async ({ loginPage, newPostPage }) => {
     const caption = `Post-${Date.now()}`;
 
     await loginPage.goToBasePage();

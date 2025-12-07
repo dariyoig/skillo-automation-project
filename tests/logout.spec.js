@@ -2,17 +2,11 @@
 //Test 1 - Verify user log out after login
 //Test 2 - Verify user log out after registration
 
-import { test, expect } from "@playwright/test";
-import { LoginPage } from "../pages/LoginPage";
-import { RegistrationPage } from "../pages/RegistrationPage";
+import { test, expect } from "./fixtures/base";
 import registrationData from "../test-data/registrationData.json" assert { type: "json" };
 import loginData from "../test-data/loginData.json" assert { type: "json" };
-import { ProfilePage } from "../pages/ProfilePage";
 
-test("Verify user log out after login", async ({ page }) => {
-  const loginPage = new LoginPage(page);
-  const profilePage = new ProfilePage(page);
-
+test("Verify user log out after login", async ({ loginPage, profilePage }) => {
   await loginPage.goToBasePage();
   await loginPage.click(loginPage.loginButtonLocator);
 
@@ -22,17 +16,13 @@ test("Verify user log out after login", async ({ page }) => {
   await loginPage.click(loginPage.signInButtonLocator);
 
   await profilePage.click(profilePage.profileButtonLocator);
-  await page.waitForURL("**/users/**");
+  await profilePage.page.waitForURL("**/users/**");
   await profilePage.click(profilePage.signOutButtonLocator);
 
   await expect(loginPage.successfullLogoutMessageLocator).toBeVisible();
 });
 
-test("Verify user log out after registration", async ({ page }) => {
-  const loginPage = new LoginPage(page);
-  const profilePage = new ProfilePage(page);
-  const registrationPage = new RegistrationPage(page);
-
+test("Verify user log out after registration", async ({ loginPage, profilePage, registrationPage }) => {
   const testData = { ...registrationData.validInputs[0] };
   testData.username = registrationPage.appendTimestampBack(testData.username);
   testData.email = registrationPage.appendTimestampFront(testData.email);
@@ -46,7 +36,7 @@ test("Verify user log out after registration", async ({ page }) => {
   await registrationPage.submitRegistrationForm();
 
   await profilePage.click(profilePage.profileButtonLocator);
-  await page.waitForURL("**/users/**");
+  await profilePage.page.waitForURL("**/users/**");
   await profilePage.click(profilePage.signOutButtonLocator);
 
   await expect(loginPage.successfullLogoutMessageLocator).toBeVisible();
