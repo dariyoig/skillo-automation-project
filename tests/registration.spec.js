@@ -19,12 +19,12 @@ test.describe("Successful registration suite", () => {
     }) => {
       const registrationPage = new RegistrationPage(page);
       const loginPage = new LoginPage(page);
-
+      const testData = { ...dataSet };
       await loginPage.goToBasePage();
       await loginPage.click(loginPage.loginButtonLocator);
       await loginPage.click(loginPage.registerButtonLocator);
 
-      await registrationPage.fillRegistrationForm(dataSet);
+      await registrationPage.fillRegistrationForm(testData);
       await registrationPage.submitRegistrationForm();
 
       await expect(
@@ -41,11 +41,13 @@ test.describe("Unsuccessful registration suite", () => {
     }) => {
       const registrationPage = new RegistrationPage(page);
       const loginPage = new LoginPage(page);
+      const testData = { ...dataSet };
+
       await loginPage.goToBasePage();
       await loginPage.click(loginPage.loginButtonLocator);
       await loginPage.click(loginPage.registerButtonLocator);
 
-      await registrationPage.fillRegistrationForm(dataSet);
+      await registrationPage.fillRegistrationForm(testData);
 
       await expect(registrationPage.regSigninButtonLocator).toBeDisabled();
       //await expect(page.url()).toContain(registrationPage.url);
@@ -58,11 +60,13 @@ test.describe("Unsuccessful registration suite", () => {
     }) => {
       const registrationPage = new RegistrationPage(page);
       const loginPage = new LoginPage(page);
+      const testData = { ...dataSet };
+
       await loginPage.goToBasePage();
       await loginPage.click(loginPage.loginButtonLocator);
       await loginPage.click(loginPage.registerButtonLocator);
 
-      await registrationPage.fillRegistrationForm(dataSet);
+      await registrationPage.fillRegistrationForm(testData);
 
       await expect(registrationPage.regSigninButtonLocator).toBeDisabled();
       //await expect(page.url()).toContain(registrationPage.url);
