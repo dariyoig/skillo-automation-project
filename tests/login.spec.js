@@ -8,13 +8,13 @@
 import { test, expect } from "./fixtures/base";
 import loginData from "../test-data/loginData.json" assert { type: "json" };
 
+test.beforeEach(async ({ loginPage }) => {
+  await loginPage.navigateToLoginPage();
+});
+
 test.describe("Successful login suite", () => {
   test("Verify successful login with valid form", async ({ loginPage }) => {
-    await loginPage.goToBasePage();
-    await loginPage.click(loginPage.loginButtonLocator);
-
     await loginPage.login(loginData.validUser.username, loginData.validUser.password, true);
-
     await loginPage.waitForUrl("**/posts/all");
 
     await expect(loginPage.loginButtonLocator).not.toBeVisible();
@@ -23,11 +23,7 @@ test.describe("Successful login suite", () => {
   });
 
   test("Verify successful login without checkbox checked", async ({ loginPage }) => {
-    await loginPage.goToBasePage();
-    await loginPage.click(loginPage.loginButtonLocator);
-
     await loginPage.login(loginData.validUser.username, loginData.validUser.password, false);
-
     await loginPage.waitForUrl("**/posts/all");
 
     await expect(loginPage.loginButtonLocator).not.toBeVisible();
@@ -38,9 +34,6 @@ test.describe("Successful login suite", () => {
 
 test.describe("Unsuccessful login suite", () => {
   test("Verify Sign in button is inactive when no username", async ({ loginPage }) => {
-    await loginPage.goToBasePage();
-    await loginPage.click(loginPage.loginButtonLocator);
-
     await loginPage.fillLoginForm("", loginData.validUser.password, true);
 
     await expect(loginPage.signInButtonLocator).toBeDisabled();
@@ -49,9 +42,6 @@ test.describe("Unsuccessful login suite", () => {
   });
 
   test("Verify Sign in button is inactive when no password", async ({ loginPage }) => {
-    await loginPage.goToBasePage();
-    await loginPage.click(loginPage.loginButtonLocator);
-
     await loginPage.fillLoginForm(loginData.validUser.username, "", true);
 
     await expect(loginPage.signInButtonLocator).toBeDisabled();
@@ -60,9 +50,6 @@ test.describe("Unsuccessful login suite", () => {
   });
 
   test("Verify error message when user and pass are invalid", async ({ loginPage }) => {
-    await loginPage.goToBasePage();
-    await loginPage.click(loginPage.loginButtonLocator);
-
     await loginPage.login(loginData.invalidUser.username, loginData.invalidUser.password, true);
 
     await expect(loginPage.wrongUsernameOrPasswordMessageLocator).toBeVisible();
