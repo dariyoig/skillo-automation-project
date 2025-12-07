@@ -19,6 +19,9 @@ export class NewPostPage extends BasePage {
     this.enterCaptionMessageLocator = page.getByRole("alertdialog", { name: "Please enter caption!" });
   }
 
+  async navigateToNewPostPage() {
+    await this.click(this.newPostButtonLocator);
+  }
   async createPost(pic, caption) {
     await this.uploadPicture(pic);
     await this.fillCaption(caption);
