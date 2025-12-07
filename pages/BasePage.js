@@ -11,18 +11,17 @@ export class BasePage {
     this.newPostButtonLocator = page.locator("#nav-link-new-post");
     this.searchFieldLocator = page.locator("#search-bar");
     this.signOutButtonLocator = page.locator("a:has(i.fa-sign-out-alt)");
-    this.successfullLogoutMessageLocator = page.getByRole("alertdialog", { name: "Successful logout!" });
+    this.successfulLogoutMessageLocator = page.getByRole("alertdialog", { name: "Successful logout!" });
   }
 
   async goToBasePage() {
     await this.page.goto("/");
-    await this.page.waitForLoadState("networkidle");
   }
 
   async click(locator) {
     await locator.click();
-    await this.page.waitForLoadState("networkidle");
   }
+
   async waitForUrl(urlPattern) {
     await this.page.waitForURL(urlPattern);
   }
