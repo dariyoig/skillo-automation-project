@@ -18,5 +18,5 @@ export default defineConfig({
     { name: "Firefox", use: { browserName: "firefox" } },
     { name: "WebKit", use: { browserName: "webkit" } },
   ],
-  workers: 1,
+  workers: 2,
 });
