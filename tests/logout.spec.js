@@ -6,31 +6,18 @@ import { test, expect } from "./fixtures/base";
 import registrationData from "../test-data/registrationData.json" assert { type: "json" };
 import { makeRegistrationDataUnique } from "../utils/utils.js";
 
-test("Verify user log out from profile page after login", async ({ loginPage, profilePage, loggedInUser }) => {
-  await profilePage.click(profilePage.profileButtonLocator);
-  await profilePage.waitForUrl("**/users/**");
-  await profilePage.click(profilePage.signOutButtonLocator);
+test("Verify user log out from profile page after login", async ({ loginPage, loggedInUser }) => {
+  await loginPage.click(loginPage.signOutButtonLocator);
 
-  await expect(loginPage.successfullLogoutMessageLocator).toBeVisible();
+  await expect(profilePage.successfullLogoutMessageLocator).toBeVisible();
 });
 
-test("Verify user log out from profile page after registration", async ({
-  loginPage,
-  profilePage,
-  registrationPage,
-}) => {
+test("Verify user log out from profile page after registration", async ({ loginPage, registrationPage }) => {
   const testData = makeRegistrationDataUnique({ ...registrationData.validInputs[0] });
 
-  await loginPage.goToBasePage();
-  await loginPage.click(loginPage.loginButtonLocator);
-
-  await loginPage.click(loginPage.registerButtonLocator);
-
+  await loginPage.navigateToRegistrationPage();
   await registrationPage.register(testData);
+  await registrationPage.click(profilePage.signOutButtonLocator);
 
-  await profilePage.click(profilePage.profileButtonLocator);
-  await profilePage.waitForUrl("**/users/**");
-  await profilePage.click(profilePage.signOutButtonLocator);
-
-  await expect(loginPage.successfullLogoutMessageLocator).toBeVisible();
+  await expect(registrationPage.successfullLogoutMessageLocator).toBeVisible();
 });
