@@ -5,6 +5,7 @@
 
 import { test, expect } from "./fixtures/base";
 import loginData from "../test-data/loginData.json" assert { type: "json" };
+import { appendTimestampBack } from "../utils/utils.js";
 import path from "node:path";
 
 const imagePath = path.resolve("test-data/image-file.png");
@@ -12,7 +13,7 @@ const invalidImagePath = path.resolve("test-data/csv-file.csv");
 
 test.describe("Successful post creation suite", () => {
   test("Verify successfull post upload with valid data", async ({ loginPage, newPostPage, loggedInUser }) => {
-    const caption = `Post-${Date.now()}`;
+    const caption = appendTimestampBack("POST");
 
     await newPostPage.click(newPostPage.newPostButtonLocator);
 
@@ -29,6 +30,7 @@ test.describe("Unsuccessful post creation suite", () => {
     await newPostPage.click(newPostPage.newPostButtonLocator);
 
     await newPostPage.fileInputLocator.setInputFiles(invalidImagePath);
+    
     await expect(newPostPage.onlyImageAllowedMessageLocator).toBeVisible();
   });
 

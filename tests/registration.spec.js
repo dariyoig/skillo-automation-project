@@ -5,6 +5,7 @@
 
 import { test, expect } from "./fixtures/base";
 import registrationData from "../test-data/registrationData.json" assert { type: "json" };
+import { makeRegistrationDataUnique } from "../utils/utils.js";
 
 const missingInputs = registrationData.missingInputs;
 const invalidInputs = registrationData.invalidInputs;
@@ -13,16 +14,13 @@ const validInputs = registrationData.validInputs;
 test.describe("Successful registration suite", () => {
   validInputs.forEach((dataSet) => {
     test(`Verify successfull registration in case of ${dataSet.case}`, async ({ loginPage, registrationPage }) => {
-      const testData = { ...dataSet };
-      testData.username = registrationPage.appendTimestampBack(testData.username);
-      testData.email = registrationPage.appendTimestampFront(testData.email);
+      const testData = makeRegistrationDataUnique({ ...dataSet });
 
       await loginPage.goToBasePage();
       await loginPage.click(loginPage.loginButtonLocator);
       await loginPage.click(loginPage.registerButtonLocator);
 
-      await registrationPage.fillRegistrationForm(testData);
-      await registrationPage.submitRegistrationForm();
+      await registrationPage.register(testData);
 
       await expect(registrationPage.successfullRegisterMessageLocator).toBeVisible();
     });
