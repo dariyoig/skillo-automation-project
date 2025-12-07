@@ -8,7 +8,7 @@ import { makeRegistrationDataUnique } from "../utils/utils.js";
 
 test("Verify user log out from profile page after login", async ({ loginPage, profilePage, loggedInUser }) => {
   await profilePage.click(profilePage.profileButtonLocator);
-  await profilePage.page.waitForURL("**/users/**");
+  await profilePage.waitForUrl("**/users/**");
   await profilePage.click(profilePage.signOutButtonLocator);
 
   await expect(loginPage.successfullLogoutMessageLocator).toBeVisible();
@@ -29,7 +29,7 @@ test("Verify user log out from profile page after registration", async ({
   await registrationPage.register(testData);
 
   await profilePage.click(profilePage.profileButtonLocator);
-  await profilePage.page.waitForURL("**/users/**");
+  await profilePage.waitForUrl("**/users/**");
   await profilePage.click(profilePage.signOutButtonLocator);
 
   await expect(loginPage.successfullLogoutMessageLocator).toBeVisible();

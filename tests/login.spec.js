@@ -15,7 +15,7 @@ test.describe("Successful login suite", () => {
 
     await loginPage.login(loginData.validUser.username, loginData.validUser.password, true);
 
-    await loginPage.page.waitForURL("**/posts/all");
+    await loginPage.waitForUrl("**/posts/all");
 
     await expect(loginPage.loginButtonLocator).not.toBeVisible();
     await expect(loginPage.profileButtonLocator).toBeVisible();
@@ -28,7 +28,7 @@ test.describe("Successful login suite", () => {
 
     await loginPage.login(loginData.validUser.username, loginData.validUser.password, false);
 
-    await loginPage.page.waitForURL("**/posts/all");
+    await loginPage.waitForUrl("**/posts/all");
 
     await expect(loginPage.loginButtonLocator).not.toBeVisible();
     await expect(loginPage.profileButtonLocator).toBeVisible();
