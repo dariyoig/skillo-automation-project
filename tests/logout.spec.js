@@ -32,7 +32,10 @@ test("Verify user log out after registration", async ({ page }) => {
   const loginPage = new LoginPage(page);
   const profilePage = new ProfilePage(page);
   const registrationPage = new RegistrationPage(page);
+  
   const testData = { ...registrationData.validInputs[0] };
+  testData.username = registrationPage.appendTimestampBack(testData.username);
+  testData.email = registrationPage.appendTimestampFront(testData.email);
 
   await loginPage.goToBasePage();
   await loginPage.click(loginPage.loginButtonLocator);

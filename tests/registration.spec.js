@@ -20,6 +20,9 @@ test.describe("Successful registration suite", () => {
       const registrationPage = new RegistrationPage(page);
       const loginPage = new LoginPage(page);
       const testData = { ...dataSet };
+      testData.username = registrationPage.appendTimestampBack(testData.username);
+      testData.email = registrationPage.appendTimestampFront(testData.email);
+
       await loginPage.goToBasePage();
       await loginPage.click(loginPage.loginButtonLocator);
       await loginPage.click(loginPage.registerButtonLocator);
