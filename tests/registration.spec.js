@@ -14,9 +14,7 @@ const validInputs = registrationData.validInputs;
 
 test.describe("Successful registration suite", () => {
   validInputs.forEach((dataSet) => {
-    test(`Verify successfull registration in case of ${dataSet.case}`, async ({
-      page,
-    }) => {
+    test(`Verify successfull registration in case of ${dataSet.case}`, async ({ page }) => {
       const registrationPage = new RegistrationPage(page);
       const loginPage = new LoginPage(page);
       const testData = { ...dataSet };
@@ -30,18 +28,14 @@ test.describe("Successful registration suite", () => {
       await registrationPage.fillRegistrationForm(testData);
       await registrationPage.submitRegistrationForm();
 
-      await expect(
-        registrationPage.successfullRegisterMessageLocator
-      ).toBeVisible();
+      await expect(registrationPage.successfullRegisterMessageLocator).toBeVisible();
     });
   });
 });
 
 test.describe("Unsuccessful registration suite", () => {
   missingInputs.forEach((dataSet) => {
-    test(`Verify sign in button inactivity in case of ${dataSet.case}`, async ({
-      page,
-    }) => {
+    test(`Verify sign in button inactivity in case of ${dataSet.case}`, async ({ page }) => {
       const registrationPage = new RegistrationPage(page);
       const loginPage = new LoginPage(page);
       const testData = { ...dataSet };
@@ -58,9 +52,7 @@ test.describe("Unsuccessful registration suite", () => {
   });
 
   invalidInputs.forEach((dataSet) => {
-    test(`Verify sign in button inactivity in case of ${dataSet.case}`, async ({
-      page,
-    }) => {
+    test(`Verify sign in button inactivity in case of ${dataSet.case}`, async ({ page }) => {
       const registrationPage = new RegistrationPage(page);
       const loginPage = new LoginPage(page);
       const testData = { ...dataSet };

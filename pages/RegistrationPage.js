@@ -11,16 +11,10 @@ export class RegistrationPage extends BasePage {
     this.regEmailLocator = page.getByRole("textbox", { name: "email" });
     this.regBirthdateLocator = page.getByPlaceholder("Birth date");
     this.regPasswordLocator = page.locator("#defaultRegisterFormPassword");
-    this.regConfirmPasswordLocator = page.locator(
-      "#defaultRegisterPhonePassword"
-    );
-    this.regPublicInfoLocator = page.getByRole("textbox", {
-      name: "Public info",
-    });
+    this.regConfirmPasswordLocator = page.locator("#defaultRegisterPhonePassword");
+    this.regPublicInfoLocator = page.getByRole("textbox", { name: "Public info" });
     this.regSigninButtonLocator = page.locator("#sign-in-button");
-    this.successfullRegisterMessageLocator = page.getByRole("alertdialog", {
-      name: "Successful register!",
-    });
+    this.successfullRegisterMessageLocator = page.getByRole("alertdialog", { name: "Successful register!" });
   }
 
   async fillRegistrationForm(data) {
