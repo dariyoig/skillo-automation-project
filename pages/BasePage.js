@@ -11,6 +11,7 @@ export class BasePage {
     this.newPostButtonLocator = page.locator("#nav-link-new-post");
     this.searchFieldLocator = page.locator("#search-bar");
     this.signOutButtonLocator = page.locator("a:has(i.fa-sign-out-alt)");
+    this.successfullLogoutMessageLocator = page.getByRole("alertdialog", { name: "Successful logout!" });
   }
 
   async goToBasePage() {
