@@ -17,6 +17,10 @@ export class RegistrationPage extends BasePage {
     this.successfullRegisterMessageLocator = page.getByRole("alertdialog", { name: "Successful register!" });
   }
 
+  async register(data) {
+    await this.fillRegistrationForm(data);
+    await this.submitRegistrationForm();
+  }
   async fillRegistrationForm(data) {
     await this.regUsernameLocator.fill(data.username);
     await this.regEmailLocator.fill(data.email);
@@ -27,11 +31,5 @@ export class RegistrationPage extends BasePage {
   }
   async submitRegistrationForm() {
     await this.regSigninButtonLocator.click();
-  }
-  appendTimestampFront(str) {
-    return Date.now() + str;
-  }
-  appendTimestampBack(str) {
-    return str + Date.now();
   }
 }
