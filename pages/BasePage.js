@@ -1,5 +1,3 @@
-// Base page with common methods for all page objects
-
 export class BasePage {
   constructor(page) {
     this.page = page;
@@ -18,8 +16,12 @@ export class BasePage {
     await this.page.goto("/");
   }
 
-  async click(locator) {
-    await locator.click();
+  async click(locator, description = "element") {
+    try {
+      await locator.click();
+    } catch (error) {
+      throw new Error(`Failed to click ${description}: ${error.message}`);
+    }
   }
 
   async waitForUrl(urlPattern) {
