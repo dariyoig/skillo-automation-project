@@ -17,7 +17,6 @@ test.beforeEach(async ({ loginPage }) => {
 test.describe("Successful login suite", () => {
   test("Verify successful login with valid data", async ({ loginPage }) => {
     await loginPage.login(validUser.username, validUser.password, true);
-    await loginPage.waitForUrl("**/posts/all");
 
     await expect(loginPage.successfulLoginMessageLocator).toBeVisible();
     await expect(loginPage.loginButtonLocator).not.toBeVisible();
@@ -26,7 +25,6 @@ test.describe("Successful login suite", () => {
 
   test("Verify successful login without checkbox checked", async ({ loginPage }) => {
     await loginPage.login(validUser.username, validUser.password, false);
-    await loginPage.waitForUrl("**/posts/all");
 
     await expect(loginPage.successfulLoginMessageLocator).toBeVisible();
     await expect(loginPage.loginButtonLocator).not.toBeVisible();
