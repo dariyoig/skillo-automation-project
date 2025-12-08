@@ -1,4 +1,3 @@
-// Page Object Model for the registration page
 import { BasePage } from "./BasePage";
 
 export class RegistrationPage extends BasePage {

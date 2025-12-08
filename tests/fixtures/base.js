@@ -8,6 +8,7 @@ import { NewPostPage } from "../../pages/NewPostPage";
 import { ProfilePage } from "../../pages/ProfilePage";
 
 const test = base.extend({
+  // Fixtures that initialize POMs per test
   loginPage: async ({ page }, use) => {
     await use(new LoginPage(page));
   },
@@ -20,7 +21,7 @@ const test = base.extend({
   profilePage: async ({ page }, use) => {
     await use(new ProfilePage(page));
   },
-  // Auto-login fixture: logs in user before test, enabling tests that require authentication
+  // Auto-login/logout fixture: logs in user before test, enabling tests that require authentication
   loggedInUser: async ({ loginPage }, use) => {
     await loginPage.page.goto(loginPage.url);
     await loginPage.login(loginData.validUser.username, loginData.validUser.password, true);

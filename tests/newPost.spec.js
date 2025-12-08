@@ -1,7 +1,6 @@
-// // New post tests specification file
-// Test 1 - Verify successfull post upload with valid data
-// Test 2 - Verify error message upon upload of invalid File
-// Test 3 - Verify error message when missing caption
+// Verify successful post upload with valid data
+// Verify error message upon upload of invalid File
+// Verify error message when missing caption
 
 import { test, expect } from "./fixtures/base";
 import { appendTimestampBack } from "../utils/utils.js";

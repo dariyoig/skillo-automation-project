@@ -1,4 +1,3 @@
-// Page Object Model for the login page
 import { BasePage } from "./BasePage";
 
 export class LoginPage extends BasePage {
@@ -22,31 +21,33 @@ export class LoginPage extends BasePage {
   }
 
   async navigateToRegistrationPage() {
-    await this.goToBasePage();
-    await this.click(this.loginButtonLocator);
+    await this.navigateToLoginPage();
     await this.click(this.registerButtonLocator);
   }
-  async login(name, pass, remember) {
-    await this.fillLoginForm(name, pass, remember);
+  async login(username, password, remember) {
+    await this.fillLoginForm(username, password, remember);
     await this.submitLoginForm();
   }
-  async fillLoginForm(name, pass, remember) {
-    await this.fillLoginUsername(name);
-    await this.fillLoginPassword(pass);
+  async fillLoginForm(username, password, remember) {
+    await this.fillLoginUsername(username);
+    await this.fillLoginPassword(password);
     await this.checkLoginRememberMe(remember);
   }
-  async fillLoginUsername(name) {
-    await this.usernameFieldLocator.fill(name);
+  async fillLoginUsername(username) {
+    await this.usernameFieldLocator.fill(username);
   }
-  async fillLoginPassword(pass) {
-    await this.passwordFieldLocator.fill(pass);
+  async fillLoginPassword(password) {
+    await this.passwordFieldLocator.fill(password);
   }
   // Handles "Remember Me" checkbox state based on test requirements
-  async checkLoginRememberMe(boolean) {
-    if (boolean) await this.rememberMeCheckboxLocator.check();
+  async checkLoginRememberMe(shouldRemember) {
+    if (shouldRemember) await this.rememberMeCheckboxLocator.check();
     else await this.rememberMeCheckboxLocator.uncheck();
   }
   async submitLoginForm() {
-    await this.signInButtonLocator.click();
+    await this.click(this.signInButtonLocator);
+  }
+  async signOut() {
+    await this.click(this.signOutButtonLocator);
   }
 }

@@ -1,7 +1,6 @@
-// // Registration tests specification file
-// Test 1 - Verify successfull registration
-// Test 2 - Verify sign in button inactivity in case of missing input
-// Test 3 - Verify sign in button inactivity in case of wrong input
+// Verify successful registration
+// Verify sign in button inactivity in case of missing input
+// Verify sign in button inactivity in case of wrong input
 
 import { test, expect } from "./fixtures/base";
 import registrationData from "../test-data/registrationData.json" assert { type: "json" };
@@ -18,6 +17,7 @@ test.beforeEach(async ({ loginPage }) => {
 test.describe("Successful registration suite", () => {
   validInputs.forEach((dataSet) => {
     test(`Verify successful registration in case of ${dataSet.case}`, async ({ registrationPage }) => {
+      // Make a copy of dataSet to avoid mutation and create unique username and email for each test run
       const testData = makeRegistrationDataUnique({ ...dataSet });
 
       await registrationPage.register(testData);

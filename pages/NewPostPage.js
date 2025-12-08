@@ -1,4 +1,3 @@
-// Page Object Model for the new post creation page
 import { BasePage } from "./BasePage";
 
 export class NewPostPage extends BasePage {
